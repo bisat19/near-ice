@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Near-Ice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="sunny-theme">
+    <header id="main-header">
+        <h1 class="title">Near-Ice</h1>
+        <img src="mascot-1.png" alt="Near-Ice Mascot" id="mascot-image"> 
+    </header>
+
+    <div class="marquee-container">
+        <p class="marquee-text">근처의 아이스크림 가게를 찾아보세요   근처의 아이스크림 가게를 찾아보세요   근처의 아이스크림 가게를 찾아보세요   근처의 아이스크림 가게를 찾아보세요   근처의 아이스크림 가게를 찾아보세요   근처의 아이스크림 가게를 찾아보세요   근처의 아이스크림 가게를 찾아보세요</p>
+    </div>
+
+    <main>
+        <div class="content-grid">
+            <div id="weather-card" class="glass-card">
+                <div id="weather-icon-container">
+                    <span id="weather-icon">☀️</span> 
+                </div>
+                <div id="weather-details">
+                    <p id="temperature">--°C</p>
+                    <p id="condition">Loading...</p>
+                </div>
+            </div>
+            <div class="glass-card forecast-card">
+                <p>Today Forecast</p>
+            </div>
+        </div>
+
+        <div class="places-grid">
+            <div class="glass-card place-card"><p>Place 1</p></div>
+            <div class="glass-card place-card"><p>Place 2</p></div>
+            <div class="glass-card place-card"><p>Place 3</p></div>
+            <div class="glass-card place-card"><p>Place 4</p></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

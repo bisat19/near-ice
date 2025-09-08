@@ -1,0 +1,256 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    transition: background-color 0.7s ease;
+    overflow-x: hidden;
+}
+
+/* --- THEME DEFINITIONS --- */
+body.sunny-theme {
+    /* Background color for sunny if image doesn't load */
+    background-color: #c9e9f9; 
+    color: #333;
+}
+body.rainy-theme {
+    /* Background color for rainy if image doesn't load */
+    background-color: #6a89a0; 
+    color: #ecf0f1; /* Lighter text for dark background */
+}
+
+/* --- HEADER --- */
+#main-header {
+    width: 100%;
+    height: 180px; /* Tinggi bisa disesuaikan */
+    position: relative;
+    display: flex;
+    /* Mengubah dari 'center' ke 'flex-start' untuk rata kiri */
+    justify-content: flex-start; 
+    align-items: center;
+    /* Menambahkan padding kiri agar tidak terlalu mepet */
+    padding-left: 50px; 
+    gap: 20px; /* Memberi jarak antara judul dan maskot */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.7s ease-in-out;
+}
+.sunny-theme #main-header {
+    background-image: url('sunny.png');
+}
+.rainy-theme #main-header {
+    background-image: url('rainny.png');
+}
+
+.title {
+    font-size: 5rem; 
+    font-weight: 700;
+    color: #ffffff;
+    z-index: 10;
+    /* Efek Glow yang Disesuaikan */
+    text-shadow: 
+        0 0 5px #e8e8e8,
+        0 0 10px #e9e6e6, 
+        0 0 15px #e4e2e2,
+        0 0 20px rgba(173, 216, 230, 0.7); /* Kurangi blur radius dan tambahkan opacity pada warna biru */
+    
+    margin-top: 180px;
+}
+
+#mascot-image {
+    /* Menghapus 'position: absolute' agar maskot mengikuti alur flexbox */
+    position: static; 
+    height: 120px; /* Menyesuaikan ukuran maskot */
+    /* Menghapus properti posisi absolut */
+    /* bottom, right, z-index dihapus */
+    transition: all 0.5s ease;
+    margin-top: 30px;
+}
+
+/* Adjust mascot position for rainy theme if needed, based on image */
+.rainy-theme #mascot-image {
+    right: 10%; /* Example adjustment */
+    height: 200px; /* Slightly larger for rainy mascot if it fits better */
+}
+
+
+/* --- MARQUEE --- */
+.marquee-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px; /* Add some space below marquee */
+}
+.marquee-container .marquee-text {
+    margin: 0;
+    font-family: 'Jua', sans-serif; /* Apply Jua font */
+    font-size: 1.8rem; /* Larger font size for marquee */
+    color: #333; /* Default text color */
+    display: inline-block;
+    padding-left: 100%; /* Start off-screen */
+    animation: marquee-scroll 25s linear infinite; /* Adjust speed if needed */
+}
+.rainy-theme .marquee-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Darker background for rainy */
+}
+.rainy-theme .marquee-container .marquee-text {
+    color: #f1f1f1; /* Lighter text for rainy */
+}
+
+@keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* --- MAIN CONTENT & GLASSMORPHISM --- */
+main {
+    padding: 0 20px 20px 20px; /* Padding for main content */
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    transition: background 0.5s ease, border-color 0.5s ease;
+    padding: 20px;
+}
+
+/* Theme specific glass card colors */
+.sunny-theme .glass-card {
+    background: rgba(255, 243, 205, 0.4); /* Light yellow tint */
+    border: 1px solid rgba(255, 243, 205, 0.5);
+    color: #333;
+}
+.rainy-theme .glass-card {
+    background: rgba(210, 218, 226, 0.3); /* Light gray tint */
+    border: 1px solid rgba(210, 218, 226, 0.4);
+    color: #f1f1f1; /* Lighter text for rainy theme */
+}
+
+
+.content-grid, .places-grid {
+    display: grid;
+    gap: 20px;
+    /* max-width: 900px; Max width for content */
+    margin: 0 auto;
+}
+
+.content-grid {
+    grid-template-columns: 1fr 2fr; /* As per design */
+    margin-bottom: 20px;
+}
+
+#weather-card {
+    display: flex;
+    flex-direction: column; /* Stack icon and details vertically */
+    align-items: flex-start; /* Align text to left */
+    gap: 10px;
+}
+#weather-icon-container {
+    width: 100%;
+    text-align: left; /* Align icon to left */
+}
+#weather-icon {
+    font-size: 5rem; /* Larger icon size */
+    line-height: 1; /* Adjust line height for icon */
+}
+#weather-details {
+    text-align: left;
+}
+#weather-details p {
+    margin: 0;
+    font-weight: 700;
+}
+#temperature {
+    font-size: 2.5rem; /* Larger temperature text */
+}
+#condition {
+    font-size: 1.5rem; /* Larger condition text */
+}
+
+.forecast-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.places-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.place-card {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer; /* Indicate it's clickable */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px 0 rgba(31, 38, 135, 0.15);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 4rem;
+    }
+    #mascot-image {
+        height: 140px;
+        right: 10%;
+        bottom: 20px;
+    }
+    .rainy-theme #mascot-image {
+        height: 160px;
+        right: 15%;
+    }
+    .content-grid, .places-grid {
+        grid-template-columns: 1fr;
+    }
+    .places-grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns for smaller screens */
+    }
+    .marquee-container .marquee-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 3rem;
+    }
+    #mascot-image {
+        height: 100px;
+        right: 5%;
+    }
+    .rainy-theme #mascot-image {
+        height: 120px;
+        right: 8%;
+    }
+    .places-grid {
+        grid-template-columns: 1fr; /* 1 column for very small screens */
+    }
+    #weather-icon {
+        font-size: 4rem;
+    }
+    #temperature {
+        font-size: 2rem;
+    }
+    #condition {
+        font-size: 1.2rem;
+    }
+}
